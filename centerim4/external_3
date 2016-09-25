@@ -1,0 +1,20 @@
+%action  notification
+event msg
+proto all
+status all
+options nowait
+
+%exec
+#!/bin/bash
+msg=$(tail -n 1 $CONTACT_INFODIR/history)
+nick=$(head -n 1 $CONTACT_INFODIR/info | cut -d "@" -f 1)
+
+if [[ $msg =~ .*YOURNAMEHERE.* ]]; then
+        notify-send -u critical "$nick" "$msg"
+else
+        if [[ $msg =~ .*YOURNAMEHERE.* ]]; then
+                notify-send -u critical "$nick" "$msg"
+        else
+                notify-send -u critical "$nick" "$msg"
+        fi
+fi
