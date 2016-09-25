@@ -1,0 +1,24 @@
+
+# Put in $NAME
+# Your name in centerim
+
+%action  notification
+event msg
+proto all
+status all
+options nowait
+
+%exec
+#!/bin/bash
+msg=$(tail -n 1 $CONTACT_INFODIR/history)
+nick=$(head -n 1 $CONTACT_INFODIR/info | cut -d "@" -f 1)
+
+if [[ $msg =~ .*$NAME.* ]]; then
+        notify-send -u critical "$nick" "$msg"
+else
+        if [[ $msg =~ .*$NAME.* ]]; then
+                notify-send -u critical "$nick" "$msg"
+        else
+                notify-send -u low "$nick" "$msg"
+        fi
+fi
