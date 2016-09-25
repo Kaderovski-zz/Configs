@@ -1,0 +1,66 @@
+
+URxvt.perl-ext-common:  default,tabbed,matcher,searchable-scrollback
+urxvt*cutchars: "()*,<>[]{}|'
+urxvt*termName: rxvt-unicode
+urxvt*urlLauncher: /usr/bin/chromium-browser
+urxvt*matcher.button: 1
+#urxvt*keysym.S-Prior: ^[[5;2~
+#urxvt*keysym.S-Next: ^[[6;2~
+
+*geometry: 99x32
+*highlightSelection: true
+
+!*font: -gohu-gohufont-*
+!*font: -*-terminus-medium-r-normal-*-*-*-72-72-*-*-iso10646-1
+!urxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-*
+!*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+!*boldFont: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
+
+*cursorColor: #ff6600
+*cursorBlink: off
+*pointerColor: #00ff00
+#*background: #000000
+*background: #141414
+*boldMode: on
+*colorMode: on
+*colorBDMode: on
+*colorULMode: on
+*underLine: on
+*foreground: #D4D2CF
+*scrollColor: #212121
+
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 15
+URxvt.tabbed.tab-bg: 12
+.perl-ext-common:  default,tabbed
+
+
+! black
+URxvt*color0  : #2E3436
+URxvt*color8  : #555753
+! red
+URxvt*color1  : #a31604
+URxvt*color9  : #c60001
+! green
+URxvt*color2  : #447241
+URxvt*color10 : #27a343
+! yellow
+URxvt*color3  : #c1951a
+URxvt*color11 : #d5a30e
+! blue
+URxvt*color4  : #425387
+URxvt*color12 : #4a5a8d
+! magenta
+URxvt*color5  : #965d98
+URxvt*color13 : #893c8c
+! cyan
+URxvt*color6  : #06989A
+URxvt*color14 : #12bccb
+! white
+URxvt*color7  : #D3D7CF
+URxvt*color15 : #EEEEEC
