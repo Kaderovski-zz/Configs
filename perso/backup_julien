@@ -1,0 +1,20 @@
+
+#!bin/bash
+
+# Ton mail
+email="TONMAIL_ICI"
+
+# On créer le targz
+# Indique d'abord le path de destination puis le path d'origine
+# Tu peux faire autant de tar.gz que tu veux
+
+tar czvf /path/de/destination/nom_du_tar_"$(date +%F)".tar.gz /path/dorigine/*
+
+
+# On supprime les fichiers de +15J
+find /path/de/destination/* -mtime +15 -exec rm {} \;
+
+# On mail
+mail -s "Backup done sur `hostname`" "$email" << EOF
+
+EOF
