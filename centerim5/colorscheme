@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<colorscheme version='1.0'>
+	<scheme name='accountstatusmenu'>
+		<color widget='button' property='normal' foreground='red'/>
+		<color widget='horizontalline' property='line' foreground='red'/>
+		<color widget='panel' property='line' foreground='red'/>
+	</scheme>
+	<scheme name='buddylist'>
+		<color widget='button' property='normal' foreground='red'/>
+		<color widget='panel' property='line' foreground='red' attributes='bold'/>
+		<color widget='treeview' property='line' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistbuddy_away'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistbuddy_na'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistbuddy_offline'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistbuddy_online'>
+		<color widget='button' property='normal' foreground='green'/>
+	</scheme>
+	<scheme name='buddylistcontact_away'>
+	<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistcontact_na'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistcontact_offline'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='buddylistcontact_online'>
+		<color widget='button' property='normal' foreground='green'/>
+	</scheme>
+	<scheme name='buddylistgroup'>
+		<color widget='button' property='normal' foreground='red'/>
+	</scheme>
+	<scheme name='conversation'>
+		<color widget='horizontalline' property='line' foreground='red' attributes='bold'/>
+		<color widget='label' property='text' foreground='red'/>
+		<color widget='panel' property='line' foreground='red' attributes='bold'/>
+		<color widget='textedit' property='text' foreground='red'/>
+		<color widget='textview' property='color1' foreground='white'/>
+		<color widget='textview' property='color2' foreground='red'/>
+		<color widget='textview' property='text' foreground='red'/>
+		<color widget='verticalline' property='line' foreground='red' attributes='bold'/>
+	</scheme>
+	<scheme name='conversation-active'>
+		<color widget='label' property='text' foreground='yellow'/>
+	</scheme>
+	<scheme name='conversation-new'>
+		<color widget='label' property='text' foreground='white' attributes='bold'/>
+	</scheme>
+	<scheme name='footer'>
+		<color widget='container' property='background' foreground='black' background='white'/>
+		<color widget='label' property='text' foreground='black' background='white'/>
+	</scheme>
+	<scheme name='generalmenu'>
+		<color widget='button' property='normal' foreground='red'/>
+		<color widget='horizontalline' property='line' foreground='red'/>
+		<color widget='panel' property='line' foreground='red'/>
+	</scheme>
+	<scheme name='generalwindow'>
+		<color widget='horizontalline' property='line' foreground='red'/>
+		<color widget='panel' property='line' foreground='red'/>
+		<color widget='verticalline' property='line' foreground='red'/>
+	</scheme>
+	<scheme name='header'>
+		<color widget='container' property='background' foreground='black' background='white'/>
+		<color widget='label' property='text' foreground='black' background='white'/>
+	</scheme>
+	<scheme name='header-request'>
+		<color widget='label' property='text' foreground='red' background='white'/>
+	</scheme>
+	<scheme name='log'>
+		<color widget='panel' property='line' foreground='red' attributes='bold'/>
+		<color widget='textview' property='text' foreground='red'/>
+	</scheme>
+</colorscheme>
