@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# email :
+email="emailHERE"
+
+# On liste le nombre de requête journalière :
+nombre_requetes=$(cat /var/log/nginx/hod-access.log | wc -l)
+nombre_erreur_5xx=$(cat /var/log/nginx/hod-access.log | tr " " "$"  | cut -d "$" -f 9 | grep '5' | wc -l)
+nombre_erreur_503=$(cat /var/log/nginx/hod-access.log | tr " " "$"  | cut -d "$" -f 9 | grep '503' | wc -l)
+nombre_erreur_504=$(cat /var/log/nginx/hod-access.log | tr " " "$"  | cut -d "$" -f 9 | grep '504' | wc -l)
+
+# On prépare le format
+
+mail -s "Récapitulatif Stats du jour" "$email" << EOF
+
+`echo -e "\n\n======================== \n
+Nombre requête total en date du `date +%F` : `echo $nombre_requetes` \n
+Nombre erreurs 5xx : `echo $nombre_erreur_5xx` \n
+Nombre erreurs 503 : `echo $nombre_erreur_503` \n
+Nombre erreurs 504 : `echo $nombre_erreur_504` "`
+
+EOF
