@@ -8,4 +8,4 @@ options nowait
 #!/bin/bash
 #msg=`cat`
 nick=$(head -n 1 $CONTACT_INFODIR/info)
-echo "new message from $nick"  | dzen2 -bg red -fg white -p 5
+echo "new message from $nick"  | dzen2 -bg red -fg white -p 4 -ta left
