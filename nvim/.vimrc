@@ -48,8 +48,3 @@ Plugin 'Valloric/YouCompleteMe'
 " End configuration, makes the plugins available
 call vundle#end()
 filetype plugin indent on
-
-let g:NERDTreeWinSize=25
-let g:NERDTreeWinPos = "left"
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
