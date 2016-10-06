@@ -1,6 +1,3 @@
-" This is for my alias alias c="vim -u /home/$USER/.term.vimrc -c terminal"
-
-
 set runtimepath+=~/.vim_runtime
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:deoplete#enable_at_startup = 1
@@ -41,7 +38,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 "
-let g:ycm_confirm_extra_conf = 0 
+let g:ycm_confirm_extra_conf = 0
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -53,6 +50,9 @@ call vundle#end()
 filetype plugin indent on
 
 let g:NERDTreeWinSize=25
-let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = "right"
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
+
+
+set ssop+=resize,winpos,winsize,blank,buffers,curdir,folds,help,options,tabpages
