@@ -48,3 +48,8 @@ Plugin 'Valloric/YouCompleteMe'
 " End configuration, makes the plugins available
 call vundle#end()
 filetype plugin indent on
+
+
+set ssop+=resize,winpos,winsize,blank,buffers,curdir,folds,help,options,tabpages
+let g:screen_size_restore_pos = 1
+let g:screen_size_by_vim_instance = 1
