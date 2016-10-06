@@ -1,10 +1,10 @@
 let SessionLoad = 1
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <expr> <Down> pumvisible() ? "\" : "\<Down>"
-inoremap <expr> <Up> pumvisible() ? "\" : "\<Up>"
-imap <Nul> <C-Space>
 inoremap <C-Space> 
+imap <Nul> <C-Space>
+inoremap <expr> <Up> pumvisible() ? "\" : "\<Up>"
+inoremap <expr> <Down> pumvisible() ? "\" : "\<Down>"
 inoremap <expr> <S-Tab> pumvisible() ? "\" : "\<S-Tab>"
 imap <M-P> <Plug>yankstack_substitute_newer_paste
 imap <M-p> <Plug>yankstack_substitute_older_paste
@@ -20,13 +20,14 @@ map  <Plug>(ctrlp)
 map  h
 xmap 	 <Plug>snipMateVisual
 smap 	 <Plug>snipMateNextOrTrigger
-xmap <NL> j
 nmap <NL> j
+xmap <NL> j
 snoremap <NL> i<Right>=snipMate#TriggerSnippet()
 omap <NL> j
 map  k
 map  l
 nmap  <Plug>yankstack_substitute_newer_paste
+nmap  <Plug>(RepeatRedo)
 xnoremap <silent>  :call multiple_cursors#new("v", 0)
 nnoremap <silent>  :call multiple_cursors#new("n", 1)
 nnoremap  :tabnew term://zsh
@@ -96,12 +97,14 @@ gT
 map <silent> ,
  :noh
 nmap ,w :w!
-xmap 0 ^
+nmap . <Plug>(RepeatDot)
 nmap 0 ^
+xmap 0 ^
 omap 0 ^
 imap ½ $
 cmap ½ $
 vmap Si S(i_f)
+nmap U <Plug>(RepeatUndoLine)
 vmap [% [%m'gv``
 vmap ]% ]%m'gv``
 nmap _ <Plug>(expand_region_shrink)
@@ -121,11 +124,16 @@ nmap gc <Plug>Commentary
 xmap gc <Plug>Commentary
 nnoremap gf :call GotoFile("")
 vnoremap <silent> gv :call VisualSelection('gv', '')
+nmap u <Plug>(RepeatUndo)
 nmap ySS <Plug>YSsurround
 nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
+nnoremap <silent> <Plug>(RepeatRedo) :call repeat#wrap("\<C-R>",v:count)
+nnoremap <silent> <Plug>(RepeatUndoLine) :call repeat#wrap('U',v:count)
+nnoremap <silent> <Plug>(RepeatUndo) :call repeat#wrap('u',v:count)
+nnoremap <silent> <Plug>(RepeatDot) :exe repeat#run(v:count)
 smap <S-Tab> <Plug>snipMateBack
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
@@ -220,7 +228,7 @@ set undofile
 set updatetime=2000
 set whichwrap=b,s,<,>,h,l
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set window=60
+set window=62
 set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
@@ -230,17 +238,19 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +47 term://.//12046:/usr/bin/zsh
+badd +47 term://.//15232:/usr/bin/zsh
 badd +1028 term://.//22683:bash
-badd +1 term://.//12044:top
+badd +1 term://.//15230:top
 badd +2 test
 badd +1 terminal
-badd +0 term://.//12244:nvim\ /home/cdiez/nvim/session/current
-badd +0 term://.//12314:nvim\ /home/cdiez50/nvim/current
-badd +0 term://.//12368:nvim\ /home/cdiez50/nvim/session/current
+badd +1 term://.//12244:nvim\ /home/cdiez/nvim/session/current
+badd +1 term://.//12314:nvim\ /home/cdiez50/nvim/current
+badd +1 term://.//15231:nvim\ /home/cdiez50/nvim/session/current
+badd +100 term://.//16976:zsh
+badd +0 term://.//17485:sh\ Scripts/time.sh
 argglobal
 silent! argdel *
-set lines=61 columns=191
+set lines=63 columns=191
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -248,6 +258,10 @@ vsplit
 wincmd _ | wincmd |
 split
 1wincmd k
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 wincmd w
 wincmd _ | wincmd |
 vsplit
@@ -258,15 +272,132 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 11 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 165 + 95) / 191)
-exe '2resize ' . ((&lines * 45 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 82 + 95) / 191)
-exe '3resize ' . ((&lines * 45 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 82 + 95) / 191)
-exe 'vert 4resize ' . ((&columns * 25 + 95) / 191)
+exe '1resize ' . ((&lines * 11 + 31) / 63)
+exe 'vert 1resize ' . ((&columns * 119 + 95) / 191)
+exe '2resize ' . ((&lines * 11 + 31) / 63)
+exe 'vert 2resize ' . ((&columns * 45 + 95) / 191)
+exe '3resize ' . ((&lines * 47 + 31) / 63)
+exe 'vert 3resize ' . ((&columns * 24 + 95) / 191)
+exe '4resize ' . ((&lines * 47 + 31) / 63)
+exe 'vert 4resize ' . ((&columns * 140 + 95) / 191)
+exe 'vert 5resize ' . ((&columns * 25 + 95) / 191)
 argglobal
-edit term://.//12044:top
+edit term://.//15230:top
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=terminal
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal fixendofline
+set foldcolumn=1
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcqj
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+set linebreak
+setlocal linebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightLineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"\ \":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightLineLeft_active_0_1#\ %#LightLineLeft_active_1#%(\ %{exists(\"*fugitive#head\")?fugitive#head():\"\"}\ %)%{((exists(\"*fugitive#head\")\ &&\ \"\"!=fugitive#head()))&&(((&filetype!=\"help\"&&\ &readonly))||1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&readonly?\"🔒\":\"\"}\ %)%{((&filetype!=\"help\"&&\ &readonly))&&(1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %t\ %)%{((&filetype!=\"help\"&&(&modified||!&modifiable)))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&modified?\"+\":&modifiable?\"\":\"-\"}\ %)%#LightLineLeft_active_1_2#\ %#LightLineMiddle_active#%=%#LightLineRight_active_1_2#\ %#LightLineRight_active_1#%(\ %3p%%\ %)%#LightLineRight_active_0_1#\ %#LightLineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=500
+setlocal thesaurus=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 14 - ((10 * winheight(0) + 5) / 11)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+14
+normal! 0
+wincmd w
+argglobal
+edit term://.//17485:sh\ Scripts/time.sh
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -381,122 +512,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-edit term://.//12368:nvim\ /home/cdiez50/nvim/session/current
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=terminal
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != ''
-setlocal filetype=
-endif
-setlocal fixendofline
-set foldcolumn=1
-setlocal foldcolumn=1
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcqj
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-set linebreak
-setlocal linebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=%{lightline#link()}%#LightLineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"\ \":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightLineLeft_active_0_1#\ %#LightLineLeft_active_1#%(\ %{exists(\"*fugitive#head\")?fugitive#head():\"\"}\ %)%{((exists(\"*fugitive#head\")\ &&\ \"\"!=fugitive#head()))&&(((&filetype!=\"help\"&&\ &readonly))||1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&readonly?\"🔒\":\"\"}\ %)%{((&filetype!=\"help\"&&\ &readonly))&&(1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %t\ %)%{((&filetype!=\"help\"&&(&modified||!&modifiable)))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&modified?\"+\":&modifiable?\"\":\"-\"}\ %)%#LightLineLeft_active_1_2#\ %#LightLineMiddle_active#%=%#LightLineRight_active_1_2#\ %#LightLineRight_active_1#%(\ %3p%%\ %)%#LightLineRight_active_0_1#\ %#LightLineRight_active_0#%(\ %3l:%-2v\ %)
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=500
-setlocal thesaurus=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-wincmd w
-argglobal
-edit term://.//12046:/usr/bin/zsh
+edit term://.//15231:nvim\ /home/cdiez50/nvim/session/current
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -603,12 +619,127 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 45 - ((44 * winheight(0) + 22) / 45)
+let s:l = 47 - ((46 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
-normal! 0
+47
+normal! 01|
+wincmd w
+argglobal
+edit term://.//15232:/usr/bin/zsh
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=terminal
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal fixendofline
+set foldcolumn=1
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcqj
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+set linebreak
+setlocal linebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightLineLeft_inactive_0#%(\ %t\ %)%#LightLineLeft_inactive_0_1#\ %#LightLineMiddle_inactive#%=%#LightLineRight_inactive_1_2#\ %#LightLineRight_inactive_1#%(\ %3p%%\ %)%#LightLineRight_inactive_0_1#\ %#LightLineRight_inactive_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=500
+setlocal thesaurus=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 48 - ((46 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+48
+normal! 021|
 wincmd w
 argglobal
 enew
@@ -763,14 +894,15 @@ setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 11 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 165 + 95) / 191)
-exe '2resize ' . ((&lines * 45 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 82 + 95) / 191)
-exe '3resize ' . ((&lines * 45 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 82 + 95) / 191)
-exe 'vert 4resize ' . ((&columns * 25 + 95) / 191)
+exe '1resize ' . ((&lines * 11 + 31) / 63)
+exe 'vert 1resize ' . ((&columns * 119 + 95) / 191)
+exe '2resize ' . ((&lines * 11 + 31) / 63)
+exe 'vert 2resize ' . ((&columns * 45 + 95) / 191)
+exe '3resize ' . ((&lines * 47 + 31) / 63)
+exe 'vert 3resize ' . ((&columns * 24 + 95) / 191)
+exe '4resize ' . ((&lines * 47 + 31) / 63)
+exe 'vert 4resize ' . ((&columns * 140 + 95) / 191)
+exe 'vert 5resize ' . ((&columns * 25 + 95) / 191)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
