@@ -247,7 +247,8 @@ badd +1 term://.//12244:nvim\ /home/cdiez/nvim/session/current
 badd +1 term://.//12314:nvim\ /home/cdiez50/nvim/current
 badd +1 term://.//15231:nvim\ /home/cdiez50/nvim/session/current
 badd +100 term://.//16976:zsh
-badd +0 term://.//17485:sh\ Scripts/time.sh
+badd +11 term://.//17485:sh\ Scripts/time.sh
+badd +0 term://.//20063:tty-clock
 argglobal
 silent! argdel *
 set lines=63 columns=191
@@ -273,13 +274,13 @@ set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 11 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 119 + 95) / 191)
+exe 'vert 1resize ' . ((&columns * 117 + 95) / 191)
 exe '2resize ' . ((&lines * 11 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 45 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 47 + 95) / 191)
 exe '3resize ' . ((&lines * 47 + 31) / 63)
-exe 'vert 3resize ' . ((&columns * 24 + 95) / 191)
+exe 'vert 3resize ' . ((&columns * 21 + 95) / 191)
 exe '4resize ' . ((&lines * 47 + 31) / 63)
-exe 'vert 4resize ' . ((&columns * 140 + 95) / 191)
+exe 'vert 4resize ' . ((&columns * 143 + 95) / 191)
 exe 'vert 5resize ' . ((&columns * 25 + 95) / 191)
 argglobal
 edit term://.//15230:top
@@ -371,7 +372,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%{lightline#link()}%#LightLineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"\ \":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightLineLeft_active_0_1#\ %#LightLineLeft_active_1#%(\ %{exists(\"*fugitive#head\")?fugitive#head():\"\"}\ %)%{((exists(\"*fugitive#head\")\ &&\ \"\"!=fugitive#head()))&&(((&filetype!=\"help\"&&\ &readonly))||1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&readonly?\"🔒\":\"\"}\ %)%{((&filetype!=\"help\"&&\ &readonly))&&(1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %t\ %)%{((&filetype!=\"help\"&&(&modified||!&modifiable)))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&modified?\"+\":&modifiable?\"\":\"-\"}\ %)%#LightLineLeft_active_1_2#\ %#LightLineMiddle_active#%=%#LightLineRight_active_1_2#\ %#LightLineRight_active_1#%(\ %3p%%\ %)%#LightLineRight_active_0_1#\ %#LightLineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal statusline=%{lightline#link()}%#LightLineLeft_inactive_0#%(\ %t\ %)%#LightLineLeft_inactive_0_1#\ %#LightLineMiddle_inactive#%=%#LightLineRight_inactive_1_2#\ %#LightLineRight_inactive_1#%(\ %3p%%\ %)%#LightLineRight_inactive_0_1#\ %#LightLineRight_inactive_0#%(\ %3l:%-2v\ %)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -389,15 +390,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 14 - ((10 * winheight(0) + 5) / 11)
+let s:l = 26 - ((10 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-14
-normal! 0
+26
+normal! 02|
 wincmd w
 argglobal
-edit term://.//17485:sh\ Scripts/time.sh
+edit term://.//20063:tty-clock
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -486,7 +487,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%{lightline#link()}%#LightLineLeft_inactive_0#%(\ %t\ %)%#LightLineLeft_inactive_0_1#\ %#LightLineMiddle_inactive#%=%#LightLineRight_inactive_1_2#\ %#LightLineRight_inactive_1#%(\ %3p%%\ %)%#LightLineRight_inactive_0_1#\ %#LightLineRight_inactive_0#%(\ %3l:%-2v\ %)
+setlocal statusline=%{lightline#link()}%#LightLineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"\ \":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightLineLeft_active_0_1#\ %#LightLineLeft_active_1#%(\ %{exists(\"*fugitive#head\")?fugitive#head():\"\"}\ %)%{((exists(\"*fugitive#head\")\ &&\ \"\"!=fugitive#head()))&&(((&filetype!=\"help\"&&\ &readonly))||1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&readonly?\"🔒\":\"\"}\ %)%{((&filetype!=\"help\"&&\ &readonly))&&(1||((&filetype!=\"help\"&&(&modified||!&modifiable))))?\"\ \":\"\"}%(\ %t\ %)%{((&filetype!=\"help\"&&(&modified||!&modifiable)))?\"\ \":\"\"}%(\ %{&filetype==\"help\"?\"\":&modified?\"+\":&modifiable?\"\":\"-\"}\ %)%#LightLineLeft_active_1_2#\ %#LightLineMiddle_active#%=%#LightLineRight_active_1_2#\ %#LightLineRight_active_1#%(\ %3p%%\ %)%#LightLineRight_active_0_1#\ %#LightLineRight_active_0#%(\ %3l:%-2v\ %)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -624,7 +625,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 47
-normal! 01|
+normal! 0
 wincmd w
 argglobal
 edit term://.//15232:/usr/bin/zsh
@@ -894,14 +895,15 @@ setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 wincmd w
+2wincmd w
 exe '1resize ' . ((&lines * 11 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 119 + 95) / 191)
+exe 'vert 1resize ' . ((&columns * 117 + 95) / 191)
 exe '2resize ' . ((&lines * 11 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 45 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 47 + 95) / 191)
 exe '3resize ' . ((&lines * 47 + 31) / 63)
-exe 'vert 3resize ' . ((&columns * 24 + 95) / 191)
+exe 'vert 3resize ' . ((&columns * 21 + 95) / 191)
 exe '4resize ' . ((&lines * 47 + 31) / 63)
-exe 'vert 4resize ' . ((&columns * 140 + 95) / 191)
+exe 'vert 4resize ' . ((&columns * 143 + 95) / 191)
 exe 'vert 5resize ' . ((&columns * 25 + 95) / 191)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
