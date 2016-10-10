@@ -431,6 +431,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r",      awesome.restart),
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
+    -- Prompt
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+
     -- Dropdown terminal
     awful.key({ modkey,	          }, "z",      function () quakeconsole[mouse.screen]:toggle() end),
 
