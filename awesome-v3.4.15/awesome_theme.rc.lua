@@ -59,7 +59,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvtc" or "xterm"
+terminal   = "urxvt -e nvim -c terminal" or "xterm"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
