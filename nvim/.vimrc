@@ -13,7 +13,8 @@ nnoremap <C-tab>   <Esc>:tabNext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 set clipboard+=unnamedplus
-tnoremap <A-a> <C-\><C-n>
+tnoremap <A-b> <C-\><C-n>
+inoremap <C-x> <C-w>
 
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
@@ -50,6 +51,6 @@ call vundle#end()
 filetype plugin indent on
 
 
-set ssop+=resize,winpos,winsize,blank,buffers,curdir,folds,help,options,tabpages
-let g:screen_size_restore_pos = 1
-let g:screen_size_by_vim_instance = 1
+set number
+set autoread
+
