@@ -59,12 +59,11 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvt -e nvim -c terminal" or "xterm"
+terminal   = "urxvtc" or "xterm"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "firefox"
 gui_editor = "gvim"
 graphics   = "gimp"
 mail       = terminal .. " -e mutt "
@@ -89,7 +88,7 @@ end
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5", "6", "7", "8", "9",},
-   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4], layouts[5], layouts[6], layouts[7], layouts[8], layouts[9], }
+   layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], }
 }
 
 for s = 1, screen.count() do
@@ -398,6 +397,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     awful.key({ }, "F12", function () awful.util.spawn("sh /home/cdiez50/Docs/lock.sh") end),
     awful.key({ modkey,}, "a", function () awful.util.spawn("chromium") end), 
+
+    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),  
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -584,9 +585,6 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
-    { rule = { class = "Firefox" },
-          properties = { tag = tags[1][1] } },
-
     { rule = { instance = "plugin-container" },
           properties = { tag = tags[1][1] } },
 
