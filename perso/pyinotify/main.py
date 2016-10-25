@@ -3,7 +3,6 @@
 #
 #########
 # Dev by :  Cdiez50
-# For    :  ATE
 # Date   :  Oct 2016
 ##########
 
