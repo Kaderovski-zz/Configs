@@ -227,7 +227,7 @@ netupinfo = lain.widgets.net({
         if iface ~= "network off" and
            string.match(myweather._layout.text, "N/A")
         then
-            myweather.update()
+            --myweather.update()
         end
 
         widget:set_markup(markup("#e54c62", net_now.sent .. " "))
@@ -364,7 +364,7 @@ for s = 1, screen.count() do
     right_layout:add(netdowninfo)
     right_layout:add(netupicon)
     right_layout:add(netupinfo)
-    right_layout:add(volicon)
+    -- right_layout:add(volicon)
     --right_layout:add(volumewidget)
     right_layout:add(memicon)
     right_layout:add(memwidget)
