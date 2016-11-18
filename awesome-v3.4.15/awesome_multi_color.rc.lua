@@ -1,10 +1,3 @@
---[[
-                                      
-     Multicolor Awesome WM config 2.0 
-     github.com/copycat-killer        
-                                      
---]]
-
 -- {{{ Required libraries
 local gears     = require("gears")
 local awful     = require("awful")
@@ -136,15 +129,15 @@ mytextclock = lain.widgets.abase({
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
 -- Weather
-weathericon = wibox.widget.imagebox(beautiful.widget_weather)
-myweather = lain.widgets.weather({
-    city_id = 123456, -- placeholder
-    settings = function()
-        descr = weather_now["weather"][1]["description"]:lower()
-        units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup("#eca4c4", descr .. " @ " .. units .. "°C "))
-    end
-})
+--weathericon = wibox.widget.imagebox(beautiful.widget_weather)
+--myweather = lain.widgets.weather({
+--    city_id = 123456, -- placeholder
+--    settings = function()
+--        descr = weather_now["weather"][1]["description"]:lower()
+--        units = math.floor(weather_now["main"]["temp"])
+--        widget:set_markup(markup("#eca4c4", descr .. " @ " .. units .. "°C "))
+--    end
+--})
 
 -- / fs
 fsicon = wibox.widget.imagebox(beautiful.widget_fs)
@@ -222,13 +215,15 @@ netdownicon = wibox.widget.imagebox(beautiful.widget_netdown)
 netdowninfo = wibox.widget.textbox()
 netupicon = wibox.widget.imagebox(beautiful.widget_netup)
 --netupicon.align = "middle"
+
+
 netupinfo = lain.widgets.net({
     settings = function()
-        if iface ~= "network off" and
-           string.match(myweather._layout.text, "N/A")
-        then
+--        if iface ~= "network off" and
+--           string.match(myweather._layout.text, "N/A")
+--      then
             --myweather.update()
-        end
+--      end
 
         widget:set_markup(markup("#e54c62", net_now.sent .. " "))
         netdowninfo:set_markup(markup("#87af5f", net_now.received .. " "))
@@ -443,10 +438,10 @@ globalkeys = awful.util.table.join(
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "g", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "h", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, }, "Left", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, }, "q", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, }, "g", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey, }, "Right", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, }, "Left", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, }, "q", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, }, "g", function () awful.screen.focus_relative(1) end),
+    awful.key({ modkey, }, "Right", function () awful.screen.focus_relative(1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
@@ -468,7 +463,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,	          }, "z",      function () quakeconsole[mouse.screen]:toggle() end),
 
     -- Widgets popups
-    awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
+    -- awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
     awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
 
     -- ALSA volume control
@@ -519,7 +514,6 @@ end),
     awful.key({ modkey }, "c", function () os.execute("xsel -p -o | xsel -i -b") end),
 
     -- User programs
-    awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
     awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
     awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
 
