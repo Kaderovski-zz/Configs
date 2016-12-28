@@ -1,39 +1,70 @@
-syntax on
-set background=dark
-set number
-colorscheme apprentice
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+set runtimepath+=~/.vim_runtime
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let g:deoplete#enable_at_startup = 1
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew term://zsh<CR>i
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+nnoremap <C-tab>   <Esc>:tabNext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+set clipboard+=unnamedplus
+tnoremap <A-b> <C-\><C-n>
+inoremap <C-x> <C-w>
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
 
 
-set nocompatible              " required
+"au VimEnter *  NERDTree
+"let g:NERDTreeWinPos = "left"
+"autocmd BufNew * wincmd l
+
+
+" Start NERDTree
+autocmd VimEnter * NERDTree
+" Go to previous (last accessed) window.
+autocmd VimEnter * wincmd p
+
+cmap q qa
+
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+
+" Vundle vimrc
+set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+"
+let g:ycm_confirm_extra_conf = 0 
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'Valloric/YouCompleteMe'
 
+" End configuration, makes the plugins available
+call vundle#end()
+filetype plugin indent on
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-"split navigations
-nnoremap <C-b> <C-W><C-J>
-nnoremap <C-h> <C-W><C-K>
-nnoremap <C-r> <C-W><C-L>
-nnoremap <C-l> <C-W><C-H>
-
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-
-Plugin 'vim-scripts/indentpython.vim'
-
-set encoding=utf-8
+set number
+set autoread
