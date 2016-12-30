@@ -19,8 +19,9 @@ urxvt*matcher.button: 1
 !*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
 !*boldFont: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
 
-urxvt*font: xft:DejaVu Sans Mono:pixelsize=12
-urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.lineSpace: 1
 
 *cursorColor: #ff6600
 *cursorBlink: off
