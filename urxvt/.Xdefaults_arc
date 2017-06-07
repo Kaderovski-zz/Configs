@@ -21,7 +21,8 @@ urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
 *cursorColor: #ff6600
 *cursorBlink: off
 *pointerColor: #00ff00
-*background: #141414
+!*background: #141414
+*background: #5c616c
 *boldMode: on
 *colorMode: on
 *colorBDMode: on
