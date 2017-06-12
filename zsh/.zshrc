@@ -119,3 +119,4 @@ export LC_MESSAGES="C"
 
 #
 archey3 | lolcat
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
