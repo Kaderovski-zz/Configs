@@ -2,9 +2,12 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 URxvt.perl-ext-common:  default,tabbed,matcher,searchable-scrollback,clipboard, resize-font, vtwheel
 urxvt*cutchars: "()*,<>[]{}|'"
+URxvt.urgentOnBell: True
 urxvt*termName: rxvt-unicode
-urxvt*matcher.button: 1
-URxvt.scrollBar: false
+URxvt.scrollBar: true
+
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
 
 *geometry: 99x32
 *highlightSelection: true
@@ -27,12 +30,9 @@ urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
 *colorULMode: on
 *underLine: on
 
-
-URxvt.url-launcher: /usr/bin/chromium
-URxvt.matcher.button: 1
-URxvt.matcher.rend.0: Uline Bold fg5
-
-
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.lineSpace: 1
 
 *cursorColor: #ff6600
 *cursorBlink: off
@@ -83,5 +83,3 @@ URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 15
 URxvt.tabbed.tab-bg: 12
-
-.perl-ext-common:  default,tabbed
