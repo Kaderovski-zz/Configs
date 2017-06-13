@@ -115,7 +115,4 @@ export LC_MESSAGES="C"
 
 #export GOPATH=$HOME/Code/go
 #PATH=$PATH:$GOPATH/bin
-
-
-#
 archey3 | lolcat
