@@ -5,7 +5,7 @@ URxvt.urgentOnBell: True
 
 urxvt*cutchars: "()*,<>[]{}|'
 urxvt*termName: rxvt-unicode
-urxvt*urlLauncher: /usr/bin/chromium-browser
+urxvt*urlLauncher: /usr/bin/vivaldi-snapshot
 urxvt*matcher.button: 1
 #urxvt*keysym.S-Prior: ^[[5;2~
 #urxvt*keysym.S-Next: ^[[6;2~
