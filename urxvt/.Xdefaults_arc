@@ -4,7 +4,7 @@ URxvt.perl-ext-common:  default,tabbed,matcher,searchable-scrollback,clipboard, 
 urxvt*cutchars: "()*,<>[]{}|'"
 URxvt.urgentOnBell: True
 urxvt*termName: rxvt-unicode
-urxvt*urlLauncher: chromium-browser
+urxvt*urlLauncher: /usr/bin/vivaldi-snapshot
 urxvt*matcher.button: 1
 URxvt.scrollBar: false
 
@@ -29,8 +29,6 @@ urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
 *colorULMode: on
 *underLine: on
 
-
-URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
 
