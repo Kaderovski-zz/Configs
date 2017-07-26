@@ -117,3 +117,4 @@ export LC_MESSAGES="C"
 #PATH=$PATH:$GOPATH/bin
 archey3 | lolcat
 if [ "$TMUX" = "" ]; then tmux; fi
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
