@@ -107,6 +107,7 @@ alias vim="nvim"
 alias c="nvim -c terminal"
 alias f="nvim -S /home/cdiez50/nvim/session/full.vim -u /home/cdiez50/.term.vimrc"
 alias d="nvim -S /home/cdiez50/nvim/session/dual.vim -u /home/cdiez50/.term.vimrc"
+alias k="kubectl"
 
 export TERM='xterm-256color'
 
