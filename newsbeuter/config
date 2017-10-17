@@ -1,0 +1,32 @@
+# -- feeds ---------------------------------------------------------------------
+
+auto-reload yes
+reload-time 120
+reload-threads 4
+download-retries 4
+download-timeout 10
+prepopulate-query-feeds yes
+notify-always yes
+notify-format "%d new articles (%n unread articles, %f unread feeds)"
+notify-program newsbeuter-notify.sh
+
+# -- display -------------------------------------------------------------------
+
+show-read-feeds yes
+feed-sort-order unreadarticlecount-asc
+
+color info default default reverse
+color listnormal_unread yellow default
+color listfocus blue default reverse bold
+color listfocus_unread blue default reverse bold
+
+text-width 80
+
+# -- misc ----------------------------------------------------------------------
+
+unbind-key C feedlist
+confirm-exit no
+cleanup-on-quit yes
+
+
+browser /home/f00b4rch/.newsbeuter/browse
