@@ -1,31 +1,53 @@
-#!/bin/sh
-# Here is a simple script  
-# It will send your smart states by mail
-# Dev by Cdiez50 
+#!bin/bash
+#Dev : F00b4rch
 
-# First, put your mail adresse here
-email="YOUR@MAIL"
+set -euo pipefail
+IFS=$'\n\t'
 
+#/ Usage: ./smart.sh
+#/ Description: Testing disk health
+#/ Examples: ./smart.sh 
+#/ Options: None
+#/   --help: Display this help message
+usage() { grep '^#/' "$0" | cut -c4- ; exit 0 ; }
+expr "$*" : ".*--help" > /dev/null && usage
 
-# Then call results
+readonly LOG_FILE="/tmp/$(basename "$0").log"
+info()    { echo "[INFO]    $*" | tee -a "$LOG_FILE" >&2 ; }
+warning() { echo "[WARNING] $*" | tee -a "$LOG_FILE" >&2 ; }
+error()   { echo "[ERROR]   $*" | tee -a "$LOG_FILE" >&2 ; }
+fatal()   { echo "[FATAL]   $*" | tee -a "$LOG_FILE" >&2 ; exit 1 ; }
 
-mail -s "Smart disks of `hostname`" "$email" << EOF
+# cleanup() {
+    # Remove temporary files
+    # Restart services
+    # ...
+    # rm $LOG_FILE
+# }
 
+if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
+    # trap cleanup EXIT
 
-SMART SDA
+    email="your@mail.here"
+    smart=$(which smartctl)
+    disks=$(ls /dev/ | grep -E 'sd[a-z]$')
 
+    info "Disks found : $disks"
 
-`/usr/sbin/smartctl -a /dev/sda`
+    # Looking for PASSED message
+    for i in $disks ; do
+        if sudo $smart -H /dev/$i | grep -qi 'passed'
+            then
+                info "$i OK"
+        else
 
+mail -s "ALERT : `hostname` disk $i" "$email" << EOF
 
-SMART SDB
-
-
-`/usr/sbin/smartctl -a /dev/sdb`
-
-
+            SMART $i
+            `sudo $smart -a /dev/$i`
 EOF
 
-# Note that if the output is too long you can use the argument -H to have PASSED status :
-# here is an exemple output :
-# SMART overall-health self-assessment test result: PASSED
+        fi
+    done
+
+fi
