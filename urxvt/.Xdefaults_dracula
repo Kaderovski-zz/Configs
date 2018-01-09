@@ -1,0 +1,66 @@
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common:  default,clipboard,tabbed,matcher,searchable-scrollback
+URxvt.urgentOnBell: True
+
+urxvt*cutchars: "()*,<>[]{}|'
+urxvt*termName: rxvt-unicode
+urxvt*urlLauncher: /usr/bin/qutebrowser
+urxvt*matcher.button: 1
+#urxvt*keysym.S-Prior: ^[[5;2~
+#urxvt*keysym.S-Next: ^[[6;2~
+
+*geometry: 99x32
+*highlightSelection: true
+
+!*font: -gohu-gohufont-*
+!*font: -*-terminus-medium-r-normal-*-*-*-72-72-*-*-iso10646-1
+!urxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-*
+!*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+!*boldFont: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+URxvt.scrollBar: false
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+urxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.lineSpace: 1
+
+*cursorColor: #ff6600
+*cursorBlink: off
+*pointerColor: #00ff00
+#*background: #000000
+!*background: #141414
+*boldMode: on
+*colorMode: on
+*colorBDMode: on
+*colorULMode: on
+*underLine: on
+!*foreground: #D4D2CF
+
+urxvt*transparent: false
+urxvt*shading: 35 
+
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
+*scrollColor: #212121
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 15
+URxvt.tabbed.tab-bg: 12
