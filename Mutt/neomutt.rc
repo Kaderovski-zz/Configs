@@ -10,7 +10,7 @@ set record="=Sent"
 # Configure SMTP Settings 
 set smtp_url = "smtp://$imap_user:$imap_pass@mail.gandi.net:587/"
 set realname="Corentin"
-set from="corentin@radioking.com"
+set from="@imap_user"
 set use_from = yes
 
 # Enable STARTTLS for Security
