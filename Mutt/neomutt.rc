@@ -1,5 +1,5 @@
 # Configure imap username and password 
-set imap_user="EMAIl"
+set imap_user="EMAIL"
 set imap_pass="PASS"
 
 # Configure Default Folder and where to put Sent Mail 
@@ -21,7 +21,6 @@ set ssl_starttls=yes
 # AJOUT
 #
 set imap_list_subscribed 
-mailboxes `echo $(find $HOME/Maildir -maxdepth 1 -type d)`
 
 # set up the sidebar, default not visible 
 set sidebar_width=30
@@ -38,6 +37,9 @@ bind index \CO sidebar-open
 bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
+bind index g noop
+bind index gg first-entry
+bind index G last-entry
 
 # which mailboxes to list in the sidebar i
 
@@ -66,7 +68,7 @@ auto_view text/html
 
 set editor="vim"
 
-bind index "G" imap-fetch-mail #reload des mails
+bind index "R" imap-fetch-mail #reload des mails
 
 color sidebar_new brightyellow default
 
@@ -222,3 +224,4 @@ set pager_stop
 set timeout=10
 set new_mail_command="notify-send -u critical 'New Email' '%n new messages, %u unread.' &"
 set signature="~/.signature"
+
