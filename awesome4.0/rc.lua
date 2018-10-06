@@ -1,11 +1,3 @@
-
---[[
-                                       
-     Awesome WM configuration template 
-     github.com/copycat-killer         
-                                       
---]]
-
 -- {{{ Required libraries
 local awesome, client, screen, tag = awesome, client, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
@@ -56,13 +48,14 @@ local function run_once(cmd_arr)
 end
 
 run_once({ "urxvtd","unclutter -root" })
+run_once({"unclutter -root" })
 -- }}}
 
 -- {{{ Variable definitions
-local chosen_theme = "multicolor"
+local chosen_theme = "powerarrow-dark"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "urxvt"
+local terminal     = "urxvtc"
 local editor       = os.getenv("EDITOR") or "vim" or "vi"
 local gui_editor   = "gvim"
 local browser      = "vivaldi-snapshot"
@@ -279,7 +272,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
 
- awful.key({ }, "F12", function () awful.util.spawn("sh /home/f00b4rch/Documents/lock.sh") end),
+    awful.key({ }, "F12", function () awful.util.spawn("sh /home/f00b4rch/src/lock.sh") end),
+    awful.key({ modkey,}, "a", function () awful.util.spawn("chromium") end),
+
 
     awful.key({ modkey,           }, "Up",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Down",  awful.tag.viewnext       ),
@@ -297,6 +292,11 @@ globalkeys = awful.util.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+
+
+	    -- On the fly useless gaps change
+    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
+    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
