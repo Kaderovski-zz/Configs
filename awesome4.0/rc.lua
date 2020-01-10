@@ -273,12 +273,11 @@ globalkeys = awful.util.table.join(
               {description = "jump to urgent client", group = "client"}),
 
     awful.key({ }, "F12", function () awful.util.spawn("sh /home/f00b4rch/src/lock.sh") end),
-    awful.key({ modkey,}, "a", function () awful.util.spawn("chromium") end),
 
 
     awful.key({ modkey,           }, "Up",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Down",  awful.tag.viewnext       ),
-    awful.key({ modkey,}, "b", function () awful.util.spawn("firefox") end),
+    awful.key({ modkey,}, "a", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, }, "Left", function () awful.screen.focus_relative(1) end),
     awful.key({ modkey, }, "q", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey, }, "g", function () awful.screen.focus_relative(1) end),
