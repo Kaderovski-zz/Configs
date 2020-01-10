@@ -68,23 +68,23 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
-    --awful.layout.suit.corner.ne,
-    --awful.layout.suit.corner.sw,
-    --awful.layout.suit.corner.se,
-    --lain.layout.cascade,
-    --lain.layout.cascade.tile,
-    --lain.layout.centerwork,
-    --lain.layout.centerwork.horizontal,
-    --lain.layout.termfair,
-    --lain.layout.termfair.center,
+   -- awful.layout.suit.fair,
+   -- awful.layout.suit.fair.horizontal,
+   -- awful.layout.suit.spiral,
+   -- awful.layout.suit.spiral.dwindle,
+   -- awful.layout.suit.max,
+   -- awful.layout.suit.max.fullscreen,
+   -- awful.layout.suit.magnifier,
+   -- awful.layout.suit.corner.nw,
+   -- awful.layout.suit.corner.ne,
+   -- awful.layout.suit.corner.sw,
+   -- awful.layout.suit.corner.se,
+   -- lain.layout.cascade,
+   -- lain.layout.cascade.tile,
+   -- lain.layout.centerwork,
+   -- lain.layout.centerwork.horizontal,
+   -- lain.layout.termfair,
+   -- lain.layout.termfair.center,
 }
 awful.util.taglist_buttons = awful.util.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -278,7 +278,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "Up",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Down",  awful.tag.viewnext       ),
-    awful.key({ modkey,}, "a", function () awful.util.spawn("vivaldi-snapshot") end),
+    awful.key({ modkey,}, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, }, "Left", function () awful.screen.focus_relative(1) end),
     awful.key({ modkey, }, "q", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey, }, "g", function () awful.screen.focus_relative(1) end),
@@ -292,11 +292,6 @@ globalkeys = awful.util.table.join(
             end
         end,
         {description = "go back", group = "client"}),
-
-
-	    -- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
-    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
@@ -676,3 +671,4 @@ client.connect_signal("focus",
     end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
