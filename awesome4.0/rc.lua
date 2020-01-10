@@ -55,10 +55,10 @@ run_once({"unclutter -root" })
 local chosen_theme = "powerarrow-dark"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "urxvtc"
+local terminal     = "st"
 local editor       = os.getenv("EDITOR") or "vim" or "vi"
 local gui_editor   = "gvim"
-local browser      = "vivaldi-snapshot"
+local browser      = "firefox"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
@@ -362,6 +362,17 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey, }, "c", function () lain.widget.calendar.show(7) end),
     awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end),
     awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end),
+
+    --xbacklight screen brightness
+    awful.key({ altkey }, "Prior",
+        function ()
+            os.execute(string.format("xbacklight -dec 10"))
+        end),
+    awful.key({ altkey }, "Next",
+        function ()
+            os.execute(string.format("xbacklight -inc 10"))
+        end),
+
 
     -- ALSA volume control
     awful.key({ altkey }, "Up",
